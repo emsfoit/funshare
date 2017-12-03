@@ -6,9 +6,12 @@ import {
   Image,
   AppRegistry,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions
 } from 'react-native';
-
+var deviceheight = Dimensions.get('window').height / (3 / 2);
+var deviceWidth = Dimensions.get('window').width - 30;
+var modalheight = Dimensions.get('window').height / 2;
 import Voice from 'react-native-voice';
 
 export default class VoiceTest extends Component {
@@ -22,7 +25,6 @@ export default class VoiceTest extends Component {
       started: '',
       results: [],
       partialResults: [],
-      recordStatus: ''
     };
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
     Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this);
@@ -106,8 +108,7 @@ export default class VoiceTest extends Component {
       started: '',
       results: [],
       partialResults: [],
-      end: '',
-      recordStatus: 'Recording ...'
+      end: ''
     });
     try {
       await Voice.start('en-US');
@@ -153,44 +154,57 @@ export default class VoiceTest extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-        <Image
-            style={styles.logo}
-            source={require('./sounds.png')}
-          />
-           <Text
+        <Text
           style={styles.logTxt}>
-         Echo Word
+         The most used words were
         </Text>
+        </View>
+        <View style={styles.container}>
+
+       <View style={styles.card}>
+       <View style = {styles.row}>
+        <Text
+        style={styles.textinput}>
+        Grate
+        </Text>
+        <Text
+        style={styles.textinput1}>
+        Hi
+        </Text>
+       </View>  
+       <View style = {styles.row}>
+        <Text
+        style={styles.textinput}>
+        amazing
+        </Text>
+        <Text
+        style={styles.textinput1}>
+        Wooow
+        </Text>
+       </View>  
+       <View style = {styles.row}>
+        <Text
+        style={styles.textinput}>
+        extraordinary
+        </Text>
+        <Text
+        style={styles.textinput1}>
+        know
+        </Text>
+       </View>  
+       <View style = {styles.row}>
+        <Text
+        style={styles.textinput}>
+        what
+        </Text>
+        <Text
+        style={styles.textinput1}>
+        yes
+        </Text>
+       </View>  
+       </View>
         </View>
      
-      <View style={styles.main}>
-         
-        <Text
-          style={styles.stat}>
-           Let's catch new Words together
-        </Text>
-        {this.state.partialResults.map((result, index) => {
-          return (
-            <Text
-              key={`partial-result-${index}`}
-              style={styles.stat}>
-              {result}
-            </Text>
-          )
-        })}
-         
-        <TouchableOpacity onPress={this._startRecognizing.bind(this)}>
-          <Image
-            style={styles.button}
-            source={require('./button.png')}
-          />
-        </TouchableOpacity>
-        <Text
-              style={styles.stat}>
-              {this.state.recordStatus}
-        </Text>
-        </View>
-        
       </View>
       
     );
@@ -204,9 +218,9 @@ const styles = StyleSheet.create({
     marginTop:50, 
   },
   logTxt:{
-    fontSize: 40,
+    fontSize: 25,
     color:'#ffffff',
-    margin: 10,
+    margin: 30,
   },
   button: {
     width: 75,
@@ -247,8 +261,31 @@ const styles = StyleSheet.create({
   stat: {
     textAlign: 'center',
     color: '#ffffff',
-    margin: 20,
-    fontSize:20
+    marginBottom: 1,
+  },
+  row: {
+    width: deviceWidth,
+    height: deviceheight / 4 - 5,
+    borderColor: "white",
+    borderWidth: 1,
+    flexDirection: 'row'
+  },
+  textinput: {
+    color: 'white',
+    backgroundColor: '#222d59',
+    fontSize: 20,
+    flex: 0.5,
+    textAlign: 'center',
+    borderColor: 'black',
+    textAlignVertical: 'center'
+  },
+  textinput1: {
+    color: 'white',
+    backgroundColor: '#592252',
+    fontSize: 20,
+    flex: 0.5,
+    textAlign: 'center',
+    textAlignVertical: 'center'
   },
 });
 
