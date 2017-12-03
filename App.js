@@ -6,6 +6,7 @@ import {
   Image,
   AppRegistry,
   TouchableHighlight,
+  TouchableOpacity
 } from 'react-native';
 
 import Voice from 'react-native-voice';
@@ -86,7 +87,7 @@ export default class VoiceTest extends Component {
         "Content-Type": "application/json"
       },
       body:wordsToJson
-      
+
     });
   }
 
@@ -149,6 +150,19 @@ export default class VoiceTest extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.logoContainer}>
+        <Image
+            style={styles.logo}
+            source={require('./sounds.png')}
+          />
+           <Text
+          style={styles.logTxt}>
+         Echo Word
+        </Text>
+        </View>
+     
+      <View style={styles.main}>
+         
         <Text
           style={styles.stat}>
            Results
@@ -166,28 +180,50 @@ export default class VoiceTest extends Component {
           style={styles.stat}>
           {`End: ${this.state.end}`}
         </Text>
-        <TouchableHighlight onPress={this._startRecognizing.bind(this)}>
+        <TouchableOpacity onPress={this._startRecognizing.bind(this)}>
           <Image
             style={styles.button}
             source={require('./button.png')}
           />
-        </TouchableHighlight>
-       
+        </TouchableOpacity>
+        </View>
+        
       </View>
+      
     );
   }
 }
 
 const styles = StyleSheet.create({
+  logo: {
+    width: 100,
+    height:100,
+    marginTop:50, 
+  },
+  logTxt:{
+    fontSize: 40,
+    color:'#ffffff',
+    margin: 10,
+  },
   button: {
-    width: 50,
-    height: 50,
+    width: 75,
+    height: 75,
+    marginTop:100
   },
   container: {
-    flex: 1,
+    flex:1,
+    alignItems:'center',
+    backgroundColor: '#283359',
+  },
+  logoContainer:{
+    flex:0.3,
+    alignItems:'center',
+  },
+  main: {
+    flex: 0.8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+
   },
   welcome: {
     fontSize: 20,
@@ -196,18 +232,18 @@ const styles = StyleSheet.create({
   },
   action: {
     textAlign: 'center',
-    color: '#0000FF',
+    color: '#ffffff',
     marginVertical: 5,
     fontWeight: 'bold',
   },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
+    color: '#ffffff',
     marginBottom: 5,
   },
   stat: {
     textAlign: 'center',
-    color: '#B0171F',
+    color: '#ffffff',
     marginBottom: 1,
   },
 });
