@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import Voice from 'react-native-voice';
-
+import { StackNavigator } from "react-navigation";
 export default class VoiceTest extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +35,7 @@ export default class VoiceTest extends Component {
 
   componentWillUnmount() {
     Voice.destroy().then(Voice.removeAllListeners);
+    
   }
 
   onSpeechStart(e) {
@@ -161,14 +162,15 @@ export default class VoiceTest extends Component {
           style={styles.logTxt}>
          Echo Word
         </Text>
-        </View>
-     
-      <View style={styles.main}>
-         
         <Text
           style={styles.stat}>
            Let's catch new Words together
         </Text>
+        </View>
+     
+      <View style={styles.main}>
+         
+        
         {this.state.partialResults.map((result, index) => {
           return (
             <Text
@@ -190,6 +192,14 @@ export default class VoiceTest extends Component {
               {this.state.recordStatus}
         </Text>
         </View>
+
+        <TouchableOpacity
+        onPress={() => this.props.navigation.navigate("SecondScreen")}>
+         <Text
+              style={styles.stat}>
+              Show the most frequently words
+        </Text>
+        </TouchableOpacity>
         
       </View>
       
@@ -223,7 +233,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   main: {
-    flex: 0.8,
+    flex: 0.7,
     justifyContent: 'center',
     alignItems: 'center',
 
