@@ -65,6 +65,7 @@ export default class VoiceTest extends Component {
   onSpeechResults(e) {
     this.setState({
       results: e.value,
+      recordStatus: ''
     });
     this.transformToJson(e.value[0]);
   }
@@ -118,6 +119,7 @@ export default class VoiceTest extends Component {
   }
 
   async _stopRecognizing(e) {
+    this.setState({recordStatus:''})
     try {
       await Voice.stop();
     } catch (e) {
@@ -146,7 +148,8 @@ export default class VoiceTest extends Component {
       started: '',
       results: [],
       partialResults: [],
-      end: ''
+      end: '',
+      recordStatus: ''
     });
   }
 
