@@ -1,12 +1,11 @@
- 
-
 import React from "react";
 import { AppRegistry } from "react-native";
-import App from "./App";
 import { StackNavigator } from "react-navigation";
+import App from "./App";
 import SecondScreen from "./words";
 import Addwords from "./addwords";
 import Tinder from "./tinder";
+import Home from "./home";
 const msword = props => {
   return <App navigation={props.navigation} />;
 };
@@ -24,7 +23,8 @@ Tinder.navigationOptions = {
   header:null
 }
 const SimpleApp = StackNavigator({
-  Home: { screen: msword },
+  Home: {screen:Home},
+  msword: { screen: msword },
   ThirdScreen: {screen: Addwords},
   SecondScreen: {screen: SecondScreen},
   Tinder: {screen: Tinder}
