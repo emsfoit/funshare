@@ -10,6 +10,7 @@
     "react": "16.0.0",
     "react-native": "0.50.4",
     "react-native-android-voice": "^0.6.0",
+    "react-native-deck-swiper": "^1.4.4",
     "react-native-google-speech": "^3.0.10",
     "react-native-voice": "^0.2.5",
     "react-navigation": "^1.0.0-beta.21"

@@ -82,7 +82,6 @@ export default class VoiceTest extends Component {
     this.upload(wordsToJson)
   }
   upload(wordsToJson){
-    console.log(wordsToJson);
     fetch("http://ec2-18-221-66-149.us-east-2.compute.amazonaws.com:8080/words?user_uuid=36ff545d-ca5a-4855-985b-eda712781efb&language=English", {
       method: "POST",
       headers: {
@@ -197,7 +196,7 @@ export default class VoiceTest extends Component {
         </View>
 
         <TouchableOpacity
-        onPress={() => this.props.navigation.navigate("ThirdScreen")}>
+        onPress={() => this.props.navigation.navigate("Tinder")}>
          <Text
               style={styles.stat}>
               Show the most frequently words

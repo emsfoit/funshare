@@ -5,8 +5,8 @@ import { AppRegistry } from "react-native";
 import App from "./App";
 import { StackNavigator } from "react-navigation";
 import SecondScreen from "./words";
-import addwords from "./addwords";
-
+import Addwords from "./addwords";
+import Tinder from "./tinder";
 const msword = props => {
   return <App navigation={props.navigation} />;
 };
@@ -17,13 +17,17 @@ msword.navigationOptions = {
 SecondScreen.navigationOptions = {
     header: null
 };
-addwords.navigationOptions = {
+Addwords.navigationOptions = {
   header: null
+};
+Tinder.navigationOptions = {
+  header:null
 }
 const SimpleApp = StackNavigator({
   Home: { screen: msword },
-  ThirdScreen: {screen: addwords},
-  SecondScreen: {screen: SecondScreen}
+  ThirdScreen: {screen: Addwords},
+  SecondScreen: {screen: SecondScreen},
+  Tinder: {screen: Tinder}
 });
 
 AppRegistry.registerComponent("msword", () => SimpleApp);
