@@ -83,7 +83,7 @@ export default class VoiceTest extends Component {
   }
   upload(wordsToJson){
     console.log(wordsToJson);
-    fetch("http://ec2-18-221-66-149.us-east-2.compute.amazonaws.com:8080/words", {
+    fetch("http://ec2-18-221-66-149.us-east-2.compute.amazonaws.com:8080/words?user_uuid=36ff545d-ca5a-4855-985b-eda712781efb&language=English", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -167,7 +167,7 @@ export default class VoiceTest extends Component {
         </Text>
         <Text
           style={styles.stat}>
-           Let's catch new Words together
+           Let's catch new Words
         </Text>
         </View>
      
@@ -197,7 +197,7 @@ export default class VoiceTest extends Component {
         </View>
 
         <TouchableOpacity
-        onPress={() => this.props.navigation.navigate("SecondScreen")}>
+        onPress={() => this.props.navigation.navigate("ThirdScreen")}>
          <Text
               style={styles.stat}>
               Show the most frequently words
@@ -232,11 +232,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#283359',
   },
   logoContainer:{
-    flex:0.3,
+    flex:0.5,
     alignItems:'center',
   },
   main: {
-    flex: 0.7,
+    flex: 0.5,
+    marginTop:50,
     justifyContent: 'center',
     alignItems: 'center',
 
