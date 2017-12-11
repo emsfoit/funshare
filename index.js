@@ -6,6 +6,7 @@ import SecondScreen from "./words";
 import Addwords from "./addwords";
 import Tinder from "./tinder";
 import Home from "./home";
+import Profile from "./profile";
 const msword = props => {
   return <App navigation={props.navigation} />;
 };
@@ -21,8 +22,12 @@ Addwords.navigationOptions = {
 };
 Tinder.navigationOptions = {
   header:null
+};
+Profile.navigationOptions={
+  header:null
 }
 const SimpleApp = StackNavigator({
+  Profile:{screen:Profile},
   Home: {screen:Home},
   msword: { screen: msword },
   ThirdScreen: {screen: Addwords},
