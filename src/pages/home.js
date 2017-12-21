@@ -8,7 +8,8 @@ import React, {
     View,
     Image,
     TouchableOpacity,
-    AsyncStorage
+    AsyncStorage,
+    ScrollView
   } from 'react-native';
   export default class Home extends Component {
     componentDidMount() {
@@ -33,7 +34,7 @@ import React, {
     render() {
       return(
         <View style={styles.container}>
-  
+            <ScrollView>
             <View style={{flexDirection:'row' ,alignItems:'center' , justifyContent:'center',marginTop:12}}>
             <View style={{flex:0.1 ,alignItems:'center'}}>
   
@@ -41,7 +42,7 @@ import React, {
             onPress={this.goToProfile.bind(this)}
             >
             <Image
-            source={require('./src/img/Undo.png')}
+            source={require('../img/Undo.png')}
             style={{width:40, height:40}}
             />
             </TouchableOpacity>
@@ -49,7 +50,7 @@ import React, {
             </View>
   
             <Image
-            source={require('./src/img/keywords.png')}
+            source={require('../img/keywords.png')}
             style={{height:50, width:150 , }}
   
             />
@@ -59,7 +60,7 @@ import React, {
   
              </View>
             </View>
-       
+            </ScrollView>
         </View>
       );
     }
@@ -70,7 +71,7 @@ import React, {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'rgba(0, 0, 0, 0.1)'
+      backgroundColor: 'rgba(0, 0, 0, 0.9)'
     },
     welcome: {
       fontSize: 20,

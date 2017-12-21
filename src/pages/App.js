@@ -6,7 +6,8 @@ import {
   Image,
   AppRegistry,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 
 import Voice from 'react-native-voice';
@@ -34,7 +35,8 @@ export default class VoiceTest extends Component {
   }
 
   componentWillUnmount() {
-    Voice.destroy().then(Voice.removeAllListeners);
+    if(Voice.destroy())
+    Voice.destroy().then(Voice.removeAllListeners)
     
   }
 
@@ -155,10 +157,11 @@ export default class VoiceTest extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <ScrollView>
         <View style={styles.logoContainer}>
         <Image
             style={styles.logo}
-            source={require('./sounds.png')}
+            source={require('../img/sounds.png')}
           />
            <Text
           style={styles.logTxt}>
@@ -186,7 +189,7 @@ export default class VoiceTest extends Component {
         <TouchableOpacity onPress={this._startRecognizing.bind(this)}>
           <Image
             style={styles.button}
-            source={require('./button.png')}
+            source={require('../img/button.png')}
           />
         </TouchableOpacity>
         <Text
@@ -202,7 +205,7 @@ export default class VoiceTest extends Component {
               Show the most frequently words
         </Text>
         </TouchableOpacity>
-        
+        </ScrollView>
       </View>
       
     );
@@ -227,8 +230,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex:1,
-    alignItems:'center',
-    backgroundColor: '#283359',
+    backgroundColor:'rgba(0, 0, 0, 0.9)',
+    flexDirection:'row',
   },
   logoContainer:{
     flex:0.5,
@@ -236,7 +239,7 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 0.5,
-    marginTop:50,
+  
     justifyContent: 'center',
     alignItems: 'center',
 

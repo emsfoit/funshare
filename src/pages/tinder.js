@@ -81,7 +81,7 @@ convertToCards(Jsonwords){
 
   render () {
     return (
-      <View style={styles.container}>
+      <View style={{  flex:1,backgroundColor:'rgba(0, 0, 0, 0.9)'   }}> 
         <Swiper
           ref={swiper => {
             this.swiper = swiper
@@ -111,7 +111,7 @@ convertToCards(Jsonwords){
               }
             },
             left: {
-              title: 'NOPE',
+              title: 'remove',
               style: {
                 label: {
                   backgroundColor: 'black',
@@ -129,7 +129,7 @@ convertToCards(Jsonwords){
               }
             },
             right: {
-              title: 'LIKE',
+              title: 'Keep it',
               style: {
                 label: {
                   backgroundColor: 'black',
@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF'
+ 
+    backgroundColor: 'white'
   },
   card: {
     flex: 1,

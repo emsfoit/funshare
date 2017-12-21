@@ -19,18 +19,10 @@ import {
 var deviceWidth = Dimensions.get('window').width - 6;
 var deviceheight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
-
-  inputContainer: {
-    flex: 1,
-    margin: 20,
-    marginTop: 10,
-    marginBottom: 0
-  },
-  input: {
-    textAlign: 'center',
-    fontSize: 18,
-    color: '#FF4470',
-    fontWeight: 'bold',
+  container: {
+    flex:1,
+    backgroundColor:'rgba(0, 0, 0, 0.9)',
+    flexDirection:'row',
   },
   username: {
     marginTop: 10,
@@ -55,38 +47,29 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   buttongrop: {
-    flex: 1,
+    flex:0.6,
+    marginTop:50,
     justifyContent: 'center',
   },
+  button:{ 
+    alignItems:'center',
+    justifyContent:'center' ,
+    backgroundColor:'rgba(0, 0, 0, 0.3)',
+     marginTop:15,
+     height:25
+  },
+  bottomLogo:{
+    marginTop:50,
+    alignItems:'center',
+     
+  }
 });
 
 class Profile extends React.Component {
   constructor(props) {
-
     super(props);
-    this.exit = this.exit.bind(this);
-    this.state = {
-      user: "hi",
-      loading: false
-    };
   }
 
-  componentWillUnmount() {
-    this._mounted = false;
-  }
-
-  exit() {
-    BackAndroid.exitApp();
-  }
-  componentWillMount() {
-  
-  }
-
-
-  componentDidMount() {
-   
-  }
-  
   goToHome() {
     this.props.navigation.navigate("Tinder");
   }
@@ -95,44 +78,24 @@ class Profile extends React.Component {
    // this.props.replaceRoute(Routes.Home(favorite));
   }
   goToAddwords() {
-   // this.props.replaceRoute(Routes.Addwords());
+    this.props.navigation.navigate("Addwords");
   }
-  goToWish() {
-    //this.props.replaceRoute(Routes.wishlist());
+  goToMsWords() {
+    this.props.navigation.navigate("Mswords");
   }
    
   render() {
-    var content = this.state.loading ? "Hi" : this.state.user.desplayName;
-
-    const TopNavigation = () => (
-      <View style={{ padding: 10, flexDirection: 'row', backgroundColor: '#FF5C7E' }}>
-      <View style={{ flex:0.4 , justifyContent:'center' , margin:5  }}>
-      </View>
-      <View style={{ flex:0.2 , alignItems:'center', justifyContent:'center'   }}>
-      <Image
-      source={require('./src/img/f.png')}
-      style={{width:45, height:45}}
-      />
-      </View>
-      <View style={{ flex:0.4 , alignItems:'flex-end', justifyContent:'center' , margin:5  }}>
-        <Image
-        source={require('./src/img/swop.png')}
-        style={{width:35, height:35}}
-        />
-      </View>
-
-      </View>
-    );
+  
     return(
-
-      <View style={{  flex:1,backgroundColor:'rgba(0, 0, 0, 0.9)'   }}> 
+      <View style={styles.container}> 
+      <ScrollView> 
       <View style={styles.imageContainer}>
       <View
       style={styles.profilePictureContainer}
       >       
       <View style = {styles.profilePicture}>
         <Image
-        source={require('./src/img/userTemp.png')}
+        source={require('../img/userTemp.png')}
         style={styles.profilePicture}
         >
 
@@ -152,28 +115,24 @@ class Profile extends React.Component {
        >Mohamad sakka</Text>
        </View>       
       </View>
-
-
-
-      <View style= {{flex:0.3,marginTop:70}}>
       <View style = {styles.buttongrop} >
 
-      <TouchableOpacity style={{flex:1 ,alignItems:'center', justifyContent:'center' ,backgroundColor:'rgba(0, 0, 0, 0.3)', margin:5}}
-       >                
-        <Text style={{color:'white' , fontSize:18}}>Go to Notepad</Text>     
+      <TouchableOpacity style={styles.button}
+       onPress={this.goToMsWords.bind(this)}>        
+        <Text style={{color:'white' , fontSize:18}}>Catch new words</Text>     
       </TouchableOpacity>
 
-       <TouchableOpacity style={{flex:1 ,alignItems:'center', justifyContent:'center' ,backgroundColor:'rgba(0, 0, 0, 0.3)', margin:5}}
+       <TouchableOpacity style={styles.button}
         onPress={this.goToHome.bind(this)}>                
         <Text style={{color:'white' , fontSize:18}}>Go to Home</Text>     
       </TouchableOpacity>
 
-       <TouchableOpacity style={{flex:1 ,alignItems:'center', justifyContent:'center' ,backgroundColor:'rgba(0, 0, 0, 0.3)', margin:5}}
+       <TouchableOpacity style={styles.button}
         onPress={this.goTofavorite.bind(this)}>                
         <Text style={{color:'white' , fontSize:18}}>My favorite Words</Text>     
       </TouchableOpacity>
         
-      <TouchableOpacity style={{flex:1 ,alignItems:'center', justifyContent:'center' ,backgroundColor:'rgba(0, 0, 0, 0.3)', margin:5}}
+      <TouchableOpacity style={styles.button}
        onPress={this.goToAddwords.bind(this)}>                
         <Text style={{color:'white' , fontSize:18}}>Add new Words</Text>     
       </TouchableOpacity>
@@ -182,19 +141,15 @@ class Profile extends React.Component {
 
       
         </View>
-        </View>
-
-        <View style = {{flex:0.1,marginBottom:10,justifyContent:'flex-end',  alignItems:'center'}}>
+        <View style = {styles.bottomLogo}>
 
         <Image
-
-        source={require('./src/img/keywords.png')}
+        source={require('../img/keywords.png')}
         style={{height:50, width:170 }}
-
         />
 
         </View>
-
+        </ScrollView>
         </View>
 
     );
