@@ -30,8 +30,8 @@ Profile.navigationOptions={
   header:null
 }
 const SimpleApp = StackNavigator({
-  Profile:{screen:Profile},
   Login:{screen:Login},
+  Profile:{screen:Profile},
   Home: {screen:Home},
   Mswords: { screen: Mswords },
   Addwords: {screen: Addwords},

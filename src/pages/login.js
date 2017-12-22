@@ -97,7 +97,7 @@ export default class login extends Component {
       style={styles.textinput}
       onChangeText={(text) => this.setState({password: text})} 
       secureTextEntry={true}
-      placeholder={"Passwort"}
+      placeholder={"Password"}
       returnKeyType="done"
       onSubmitEditing={this.login.bind(this)}
       placeholderTextColor="white"
@@ -111,7 +111,7 @@ export default class login extends Component {
       </View>
       <View style={{ flex:0.5  , alignItems:'center'  }}>
       <TouchableHighlight
-       onPress={this.goToSignup.bind(this)}
+       onPress={this.login.bind(this)}
      >
       <Text style={{textDecorationLine: 'underline', color:"white" , fontSize:14}}>Jetzt hier registrieren</Text>     
       </TouchableHighlight>
@@ -141,7 +141,7 @@ export default class login extends Component {
 
 
   login() {
-    
+    this.props.navigation.navigate("Profile");
   }
 }
 var styles = {
