@@ -54,9 +54,12 @@ const styles = StyleSheet.create({
   button:{ 
     alignItems:'center',
     justifyContent:'center' ,
-    backgroundColor:'rgba(0, 0, 0, 0.3)',
-     marginTop:15,
-     height:25
+    backgroundColor:'#2a393d',
+     height:35,
+     margin:15,
+     borderRadius:10
+
+
   },
   bottomLogo:{
     marginTop:50,
@@ -141,14 +144,7 @@ class Profile extends React.Component {
 
       
         </View>
-        <View style = {styles.bottomLogo}>
-
-        <Image
-        source={require('../img/keywords.png')}
-        style={{height:50, width:170 }}
-        />
-
-        </View>
+   
         </ScrollView>
         </View>
 
