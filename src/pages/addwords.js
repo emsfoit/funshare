@@ -137,7 +137,7 @@ export default class addwards extends Component {
           placeholderTextColor="'rgba(255, 255,255, 0.5)'"
           underlineColorAndroid="transparent"
         />
-        <TouchableOpacity onPress = {() => this.addword()} style ={styles.addwordButton} >
+        <TouchableOpacity onPress = {this.addword()} style ={styles.addwordButton} >
         <Text style = {{color:'white' , fontSize:18 ,fontWeight: "500"}} >Add</Text>
         </TouchableOpacity>
        </View> 

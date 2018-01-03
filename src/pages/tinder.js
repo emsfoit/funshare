@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Swiper from 'react-native-deck-swiper'
-import { StyleSheet, View, Text, Button } from 'react-native'
+import { StyleSheet, View, Text, Button, Image } from 'react-native'
 
 export default class Exemple extends Component {
   constructor (props) {
@@ -22,7 +22,7 @@ export default class Exemple extends Component {
         });
 }
 getItems(){
-    return fetch('http://ec2-18-221-66-149.us-east-2.compute.amazonaws.com:8080/words?user_uuid=36ff545d-ca5a-4855-985b-eda712781efb&language=English&limit=10')
+    return fetch('http://ec2-18-221-66-149.us-east-2.compute.amazonaws.com:8080/words?user_uuid=36ff545d-ca5a-4855-985b-eda712781efb&language=English&limit=50')
     .then(response => response.json())
     .then(responseJson => {
         //console.log(responseJson);
@@ -46,6 +46,18 @@ convertToCards(Jsonwords){
     return (
       <View style={styles.card}>
         <Text style={styles.text}>{card}</Text>
+        <Image
+          style={{
+            marginTop:50,
+            alignSelf: 'center',
+            height: 150,
+            width: 150,
+            borderWidth: 1,
+            borderRadius: 75
+          }}
+          resizeMode="stretch"
+          source={{uri: `http://ec2-18-221-66-149.us-east-2.compute.amazonaws.com:8080/image?word=${card}`}}
+        />
       </View>
     )
   };
